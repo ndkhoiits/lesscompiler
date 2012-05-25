@@ -1,0 +1,37 @@
+body {
+   background-color: #FFFFFF;
+   background-position: 0 40px;
+   background-repeat: repeat-x;
+   padding-top: 90px;
+   position: relative;
+}
+
+.logo-less {
+   background: url("./img/logo_less.png") no-repeat scroll 0 0;
+   display: block;
+   height: 80px;
+   margin-bottom: 30px;
+}
+
+.logo-css {
+   background: url("./img/css_logo.png") no-repeat scroll 0 0;
+   display: block;
+   height: 80px;
+   margin-bottom: 30px;
+}
+
+.code {
+   font-family: 'Bitstream Vera Sans Mono','DejaVu Sans Mono','Monaco',Courier,monospace !important;
+}
+.info {
+   padding: 8px 0px 8px 10px;
+   width: 518px;
+}
+
+#result {
+   min-height: 270px;
+}
+
+#editor {
+   font-family: 'Bitstream Vera Sans Mono','DejaVu Sans Mono','Monaco',Courier,monospace !important;
+}
