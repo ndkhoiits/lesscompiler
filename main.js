@@ -309,7 +309,7 @@ lesstester.Compiler = function ()
             errorline(e, 0, '');
             errorline(e, 1, 'line');
             errorline(e, 2, '');
-            content += ' on line ' + e.line + ' column ' + e.column + '<br />';
+            //content += ' on line ' + e.line + ' column ' + e.column + '<br />';
             content += '<p class="error-message"><ul>' + error.join('') + '</ul></p>';
          }
          resultElm.html(content);
