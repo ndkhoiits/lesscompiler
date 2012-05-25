@@ -21,7 +21,7 @@ lesstester.Log = function (selector)
 
    self.addMessage = function (msg)
    {
-      var logElm = $("#log");
+      var logElm = $("#result");
       logElm.html(msg);
    };
 
@@ -257,7 +257,17 @@ lesstester.Compiler = function ()
             data.onError(error);
             return;
          }
-         data.onComplete(tree.toCSS({ compress:data.compress }));
+         var strResult;
+         try
+         {
+            strResult = tree.toCSS({compress:data.compress});
+            data.onComplete(strResult);
+         }
+         catch (e)
+         {
+            strResult = e.message;
+            data.onError(e, "");
+         }
       });
    };
 
@@ -274,18 +284,45 @@ lesstester.Compiler = function ()
 (function ($, undefined)
 {
    var compiler, editor, log;
-   log = new lesstester.Log("#log");
+   log = new lesstester.Log("#result");
    compiler = new lesstester.Compiler();
    compiler.config({
       compress:false,
       onComplete:function (css)
       {
          $("#result").text(css);
-         log.addCompiled("Successfully compiled!");
+         //log.addCompiled("Successfully compiled!");
       },
-      onError:function (error)
+      onError:function (e, href)
       {
-         log.addError(error.message);
+         var template = '<li><label>{line}</label><pre class="{class}">{content}</pre></li>';
+         var error = [];
+         var errorline = function (e, i, className)
+         {
+            if (e.extract[i])
+            {
+               error.push(template.replace(/\{line\}/, parseInt(e.line) + (i - 1))
+                  .replace(/\{class\}/, className)
+                  .replace(/\{content\}/, e.extract[i]));
+            }
+         };
+         var content = "";
+         var message = e.message;
+         var resultElm = $("#result");
+         content += '<strong class="label label-warning">ERROR</strong> ' + message;
+         if (e.stack)
+         {
+            content += '<br />' + e.stack.split('\n').slice(1).join('<br />');
+         }
+         else if (e.extract)
+         {
+            errorline(e, 0, '')
+            errorline(e, 1, 'line');
+            errorline(e, 2, '');
+            content += ' on line ' + e.line + ' column ' + e.column + '<br />';
+            content += '<p class="error-message"><ul>' + error.join('') + '</ul></p>';
+         }
+         resultElm.html(content);
       }
 
    });
@@ -304,6 +341,8 @@ lesstester.Compiler = function ()
    {
       compiler.parse(editor.val());
    });
+
+   $("#editor").focus();
 
 
 })(jQuery, undefined);

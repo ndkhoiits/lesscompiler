@@ -6,20 +6,6 @@ body {
    position: relative;
 }
 
-.logo-less {
-   background: url("./img/logo_less.png") no-repeat scroll 0 0;
-   display: block;
-   height: 80px;
-   margin-bottom: 30px;
-}
-
-.logo-css {
-   background: url("./img/css_logo.png") no-repeat scroll 0 0;
-   display: block;
-   height: 80px;
-   margin-bottom: 30px;
-}
-
 .code {
    font-family: 'Bitstream Vera Sans Mono','DejaVu Sans Mono','Monaco',Courier,monospace !important;
 }
@@ -34,4 +20,46 @@ body {
 
 #editor {
    font-family: 'Bitstream Vera Sans Mono','DejaVu Sans Mono','Monaco',Courier,monospace !important;
+}
+
+less-error-message {
+   background-color: #EEEEEE;
+   border: 1px solid #EE0000;
+   border-radius: 5px 5px 5px 5px;
+   color: #EE0000;
+   font-family: Arial,sans-serif;
+   margin-bottom: 15px;
+   padding: 15px;
+}
+.less-error-message h3 {
+   font-size: 20px;
+   font-weight: bold;
+   margin: 0;
+   padding: 15px 0 5px;
+}
+
+#result label {
+   display: inline-block;
+   color: #DD6666;
+   font-family: 'Bitstream Vera Sans Mono','DejaVu Sans Mono','Monaco',Courier,monospace !important;
+   font-size: 10px;
+}
+#result pre {
+   display: inline-block;
+   border: none;
+   color: #DD6666;
+   padding: 0px 0px 0px 15px;
+}
+
+#result ul {
+   list-style-type: none;
+}
+
+#result li {
+   list-style-type: none;
+}
+
+#result .line {
+   color: red;
+   font-weight: bold;
 }
