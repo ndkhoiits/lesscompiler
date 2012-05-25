@@ -316,7 +316,7 @@ lesstester.Compiler = function ()
          }
          else if (e.extract)
          {
-            errorline(e, 0, '')
+            errorline(e, 0, '');
             errorline(e, 1, 'line');
             errorline(e, 2, '');
             content += ' on line ' + e.line + ' column ' + e.column + '<br />';
