@@ -44,11 +44,6 @@ lesstester.Log = function (selector)
    return self;
 
 };
-/**
- * Editor class
- * ( lesstester.editor )
- * @require jquery.js
- */
 
 var lesstester = lesstester || {};
 
@@ -215,11 +210,6 @@ lesstester.Editor = function (selector)
 
    return self;
 };
-/**
- * Compiler class
- * ( lesstester.Compiler )
- * @require jquery.js, less.js
- */
 
 var lesstester = lesstester || {};
 
@@ -327,7 +317,7 @@ lesstester.Compiler = function ()
 
    });
 
-   // editor
+//   editor
    editor = new lesstester.Editor("#editor");
    editor.config({
       onShiftEnter:function ()
